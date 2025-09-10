@@ -22,10 +22,11 @@ def carregar_json():
 def cadastrar_tarefas():
     carregar_json()
     id = int(input('ID: '))
-    titulo = input('Digite o nome da tarefa: ')
-    descricao = input('Descrição: ')
-    prioridade = input('Qual nível de prioridade BAIXA, MÉDIA ou ALTA? ')
-    status = input('Status: ')
+    titulo = input('Digite o nome da tarefa: ').title()
+    descricao = input('Descrição: ').title()
+    prioridade = input(
+        'Qual nível de prioridade BAIXA, MÉDIA ou ALTA? ').title()
+    status = input('Status: ').title()
 
     LISTA_TAREFAS.append({'id': id, 'titulo': titulo, 'descricao': descricao,
                          'prioridade': prioridade, 'status': status})
@@ -35,12 +36,8 @@ def cadastrar_tarefas():
 def listar_tarefas():
     # Exibe todas tarefas cadastradas
     carregar_json()
-    filtro = input('Deseja filtrar por STATUS ou PRIORIDADE: ').upper()
     for tarefa in LISTA_TAREFAS:
-        if filtro == 'STATUS':
-            print(tarefa['status'])
-        else:
-            print(tarefa['prioridade'])
+        print(tarefa)
 
 
 def atualizar_tarefas():
